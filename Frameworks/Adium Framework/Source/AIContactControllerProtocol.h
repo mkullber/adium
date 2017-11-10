@@ -59,6 +59,7 @@
 
 #define	KEY_USE_OFFLINE_GROUP			@"Use Offline Group"
 #define	KEY_HIDE_CONTACT_LIST_GROUPS	@"Hide Contact List Groups"
+#define KEY_CONFIRM_DRAGNDROP           @"Confirm Drag And Drop"
 #define	PREF_GROUP_CONTACT_LIST_DISPLAY	@"Contact List Display"
 #define PREF_GROUP_CONTACT_LIST			@"Contact List"
 

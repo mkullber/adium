@@ -18,5 +18,7 @@
 	<true/>
 	<key>IsExpanded</key>
 	<true/>
+	<key>Confirm drag and drop</key>
+	<true/>
 </dict>
 </plist>

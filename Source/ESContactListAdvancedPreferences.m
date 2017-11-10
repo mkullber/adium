@@ -149,6 +149,8 @@
 	[checkBox_verticalAutosizing setLocalizedString:AILocalizedString(@"Size to fit vertically", nil)];
 	[checkBox_showTooltips setLocalizedString:AILocalizedString(@"Show contact information tooltips",nil)];
 	[checkBox_showTooltipsInBackground setLocalizedString:AILocalizedString(@"While Adium is in the background","Checkbox to indicate that something should occur while Adium is not the active application")];
+	[checkBox_confirmDragnDrop setLocalizedString:AILocalizedString(@"Confirm drag and drop",nil)];
+	[checkBox_confirmDragnDrop setToolTip:@"\"Confirm\" items dragged-and-dropped to contact list by placing them into text field"];
 	[checkBox_verticalAutosizing setLocalizedString:AILocalizedString(@"Size to fit vertically", nil)];
 	[checkBox_windowHasShadow setLocalizedString:AILocalizedString(@"Show window shadow",nil)];
 	[checkBox_windowHasShadow setToolTip:@"Stay close to the Vorlon."];

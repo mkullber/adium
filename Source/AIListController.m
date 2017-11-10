@@ -27,6 +27,8 @@
 #import <Adium/AIMetaContact.h>
 #import <Adium/AIProxyListObject.h>
 #import <Adium/AITextAttachmentExtension.h>
+#import <Adium/AIContentMessage.h>
+#import <Adium/AIContentControllerProtocol.h>
 #import <AIUtilities/AIAttributedStringAdditions.h>
 #import <AIUtilities/AIAutoScrollView.h>
 #import <AIUtilities/AIPasteboardAdditions.h>
@@ -874,12 +876,25 @@
 			if(messageAttributedString && [messageAttributedString length] !=0) {
 				AIChat *chat = [adium.chatController openChatWithContact:(AIListContact *)(item.listObject)
 													  onPreferredAccount:YES];
-				
-				[chat.chatContainer.messageViewController addToTextEntryView:messageAttributedString];
-				
-				[adium.interfaceController setActiveChat:chat];
-				[NSApp activateIgnoringOtherApps:YES];
-				[NSApp arrangeInFront:nil];
+
+				if([[adium.preferenceController preferenceForKey:KEY_CONFIRM_DRAGNDROP group:PREF_GROUP_CONTACT_LIST_DISPLAY] boolValue]) {
+					[chat.chatContainer.messageViewController addToTextEntryView:messageAttributedString];
+					
+					[adium.interfaceController setActiveChat:chat];
+					[NSApp activateIgnoringOtherApps:YES];
+					[NSApp arrangeInFront:nil];
+				}
+				else {
+                    AIContentMessage				*messageContent;
+					messageContent = [AIContentMessage messageInChat:chat
+														withSource:[chat account]
+														destination:[chat listObject]
+														date:nil
+														message:messageAttributedString
+														autoreply:NO];
+
+					[[adium contentController] sendContentObject:messageContent];
+				}
 			}
 			else {
 				success = NO;
