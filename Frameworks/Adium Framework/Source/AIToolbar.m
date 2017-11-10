@@ -58,11 +58,13 @@
 	 */
 	[self setDelegate:nil];
 
-	for(NSToolbarItem *item in [self items]) {
-		[defaultCenter postNotificationName:NSToolbarDidRemoveItemNotification
-									 object:self
-								   userInfo:[NSDictionary dictionaryWithObject:item
-																		forKey:@"item"]];
+	if([self isVisible]) {
+		for(NSToolbarItem *item in [self items]) {
+			[defaultCenter postNotificationName:NSToolbarDidRemoveItemNotification
+										 object:self
+									   userInfo:[NSDictionary dictionaryWithObject:item
+																			forKey:@"item"]];
+		}
 	}
 
 	//call the unswizzled implementation now that we're done with our additions
